@@ -15,7 +15,7 @@ mongoose.connection.on('connected', () => {
      console.log('Successfully connected to the database');
  });
  app.use(cors({
-     origin: ['https://irenge-socialfront-1eby.vercel.app', 'http://localhost:3000'], // Add your production and development domains
+     origin: ['https://irengetubefront.vercel.app'], // Add your production and development domains
      methods: ['GET', 'POST', 'PUT', 'DELETE'],  // Specify allowed HTTP methods
      allowedHeaders: ['Content-Type', 'Authorization'],  // Specify allowed headers
    }));
