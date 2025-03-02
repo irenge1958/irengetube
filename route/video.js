@@ -7,8 +7,8 @@ const video = express.Router();
 video.post("/createvideo/:id",createV);
 video.post("/commentvideo/:id",verifyuser,createcommentV);
 video.put("/modifyvideo/:id/:Id",verifyuser,modifyV);
-video.delete("/deletevideo/:id/:Id",verifyuser,deleteV);
-video.post("/likevideo/:id/:Id",verifyuser,likeV)
+video.delete("/deletevideo/:id",deleteV);
+video.post("/likevideo/:id",verifyuser,likeV)
 video.post("/addview/:id",addview)
 video.put("/unlikevideo/:id/:Id",verifyuser,dislikeV)
 video.get("/search/:q",search)

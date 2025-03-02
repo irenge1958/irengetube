@@ -70,8 +70,8 @@ const modifyV =async (req, res,next) => {
     }
     const deleteV =async (req, res,next) => {
    
-        if (req.params.id!==req.user.id) return next(createError(401,'cannot update other\'s information')) 
-        const updateduser=await video.findByIdAndDelete(req.params.Id,{$set:req.body},{new:true})
+        console.log(req.params.id)
+        const updateduser=await video.findByIdAndDelete(req.params.id)
         
         if (!updateduser) return next(createError(404,'video not found'))
         res.status(200).send('deleted successfully')
