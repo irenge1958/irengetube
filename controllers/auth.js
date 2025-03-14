@@ -25,6 +25,7 @@ if (existinguser || existinguser2) return next(createError(500,'This user alread
             message: 'Successfully created',
             user: others
         });
+        console.log(others)
     } catch (err) {
      
         // Send an error response

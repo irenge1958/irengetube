@@ -10,7 +10,7 @@ const videoScheme=mongoose.Schema({
     },
     videourl:{
         type:String,
-        required:true,
+        
       
     },
     title:{
