@@ -35,6 +35,9 @@ const userScheme=mongoose.Schema({
    fromgoogle:{
     type:Boolean,
     default:false
+   },
+   history:{
+    type:Array
    }
 },
 {timestamps:true}

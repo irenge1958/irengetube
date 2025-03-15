@@ -46,6 +46,16 @@ const search= async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   };
+  const myuser= async (req, res) => {
+
+    try {
+      const results = await users.findById(req.params.id); // Find items starting with the provided string (case-insensitive)
+      res.json(results).status(200);
+    } catch (error) {
+      console.error('Error searching:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  };
   const searchs= async (req, res) => {
       try {
         const results = await users.find({ username:  req.params.q }); // Find items starting with the provided string (case-insensitive)
@@ -64,5 +74,14 @@ const search= async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
       }
     };
-    
-module.exports = { subscribe, unsubscribe, subscribtion, update,searchs,search,mygy };
+    const historyp= async (req, res) => {
+      try {
+        const results=await users.findByIdAndUpdate(req.body.id,{$push:{history:req.params.id}})
+        res.json(results).status(200);
+      } catch (error) {
+        console.error('Error searching:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    };
+   
+module.exports = { subscribe, unsubscribe, subscribtion, update,searchs,search,mygy,historyp };
