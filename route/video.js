@@ -8,9 +8,9 @@ video.post("/createvideo/:id",createV);
 video.post("/commentvideo/:id",verifyuser,createcommentV);
 video.put("/modifyvideo/:id/:Id",verifyuser,modifyV);
 video.delete("/deletevideo/:id",deleteV);
-video.post("/likevideo/:id",verifyuser,likeV)
+video.post("/likevideo/:id/:Id",likeV)
 video.post("/addview/:id",addview)
-video.put("/unlikevideo/:id/:Id",verifyuser,dislikeV)
+video.put("/unlikevideo/:id/:Id",dislikeV)
 video.get("/search/:q",search)
 video.get("/searchs/:q",searchs)
 video.get("/trend",trendV)

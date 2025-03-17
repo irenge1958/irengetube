@@ -77,8 +77,7 @@ const modifyV =async (req, res,next) => {
         res.status(200).send('deleted successfully')
         }
         const likeV = async (req, res, next) => {
-            console.log(req.user.id)
-            if (req.params.id !== req.user.id) return next(createError(401, 'Not allowed'));
+           
        
             try {
                 const videos = await video.findById(req.params.Id);
@@ -104,7 +103,7 @@ const modifyV =async (req, res,next) => {
             }
         };
         const dislikeV = async (req, res, next) => {
-            if (req.params.id !== req.user.id) return next(createError(401, 'Not allowed'));
+        
         
             try {
                 const videos = await video.findById(req.params.Id);
