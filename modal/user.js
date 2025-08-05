@@ -2,14 +2,12 @@ const mongoose=require('mongoose')
 const userScheme=mongoose.Schema({
     username:{
         type:String,
-        required:true,
         min:3,
         max:30,
         unique:true
     },
     email:{
         type:String,
-        required:true,
         min:3,
         max:30,
         unique:true
@@ -37,6 +35,9 @@ const userScheme=mongoose.Schema({
     default:false
    },
    history:{
+    type:Array
+   },
+  playlist:{
     type:Array
    }
 },

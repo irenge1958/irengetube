@@ -4,14 +4,14 @@ const users = require('../modal/user');
 const createError=require('../createError')
 const subscribe =async (req, res,next) => {
  
-    const sub=await users.findByIdAndUpdate(req.user.id,{$push:{subscribings:req.params.id}})
+    const sub=await users.findByIdAndUpdate(req.body.id,{$push:{subscribings:req.params.id}})
     await users.findByIdAndUpdate(req.params.id, { $inc: { subscribers: 1 } })
     res.status(200).json({ message: 'Subscription successful!' });
 };
 
 const unsubscribe = async (req, res) => {
    
-    const unsub=await users.findByIdAndUpdate(req.user.id,{$pull:{subscribings:req.params.id}})
+    const unsub=await users.findByIdAndUpdate(req.body.id,{$pull:{subscribings:req.params.id}})
     await users.findByIdAndUpdate(req.params.id, { $inc: { subscribers: -1 } })
     res.status(200).json({ message: 'unsSubscription successful!' });
 };
@@ -30,7 +30,7 @@ const subscribtion = async (req, res,next) => {
 
 const update =async (req, res,next) => {
    
-if (req.params.id!==req.user.id) return next(createError(401,'cannot update other\'s information')) 
+console.log(req.body)
 const updateduser=await users.findByIdAndUpdate(req.params.id,{$set:req.body},{new:true})
 
 if (!updateduser) return next(createError(404,'user not found'))
@@ -83,5 +83,14 @@ const search= async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
       }
     };
-   
-module.exports = { subscribe, unsubscribe, subscribtion, update,searchs,search,mygy,historyp };
+    
+    const  playlist= async (req, res) => {
+      try {
+        const results=await users.findByIdAndUpdate(req.body.id,{$push:{playlist:req.params.id}})
+        res.json(results).status(200);
+      } catch (error) {
+        console.error('Error searching:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+      }
+    };
+module.exports = { subscribe, unsubscribe, subscribtion, update,searchs,search,mygy,historyp,playlist};
