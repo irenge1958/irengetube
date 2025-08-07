@@ -161,8 +161,7 @@ const modifyV =async (req, res,next) => {
                 }
             }
             const createcommentV=async(req,res,next)=>{
-                console.log(req.params.id)
-                if (req.params.id !== req.user.id) return next(createError(401, 'Not allowed'));
+              
                 try{
                     
                  const createcomment=await comments.create({

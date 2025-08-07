@@ -5,7 +5,7 @@ const express = require("express");
 const video = express.Router();
 
 video.post("/createvideo/:id",createV);
-video.post("/commentvideo/:id",verifyuser,createcommentV);
+video.post("/commentvideo/:id",createcommentV);
 video.put("/modifyvideo/:id/:Id",verifyuser,modifyV);
 video.delete("/deletevideo/:id",deleteV);
 video.post("/likevideo/:id/:Id",likeV)
