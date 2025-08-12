@@ -45,7 +45,7 @@ const search= async (req, res) => {
  
   const searchs= async (req, res) => {
       try {
-        const results = await video.find({ title:  req.params.q }); // Find items starting with the provided string (case-insensitive)
+        const results = await video.find({ title: { $regex: `^${req.params.q}`, $options: 'i' } }); // Find items starting with the provided string (case-insensitive)
         res.json(results).status(200);
       } catch (error) {
         console.error('Error searching:', error);
